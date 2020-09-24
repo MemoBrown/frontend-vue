@@ -34,7 +34,8 @@
         <td>
           <router-link
             class="hover:underline text-green-600"
-            :to="{ name: 'coin-detail', params: { id: a.id } }">
+            :to="{ name: 'coin-detail', params: { id: a.id } }"
+          >
             {{ a.name }}
           </router-link>
           <small class="ml-1 text-gray-500">
@@ -44,8 +45,13 @@
         <td>{{ a.priceUsd | dollar }}</td>
         <td>{{ a.marketCapUsd | dollar }}</td>
         <td
-          :class="a.changePercent24Hr.includes('-') ? 'text-red-600' : 'text-green-600'"
-        >{{ a.changePercent24Hr | percent }}
+          :class="
+            a.changePercent24Hr.includes('-')
+              ? 'text-red-600'
+              : 'text-green-600'
+          "
+        >
+          {{ a.changePercent24Hr | percent }}
         </td>
         <td class="hidden sm:block">
           <px-button @click="goToCoin(a.id)">
@@ -71,7 +77,7 @@ export default {
     }
   },
   methods: {
-    goToCoin(id){
+    goToCoin(id) {
       this.$router.push({ name: 'coin-detail', params: { id } })
     }
   }
